@@ -1,1 +1,1 @@
-This contains content for the Shell Basics project.
+THe 0 Script Prints the Current Working Directory.
