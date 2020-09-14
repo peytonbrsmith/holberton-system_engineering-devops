@@ -1,0 +1,1 @@
+This repository contains directories, scripts, and other content related to the **0x03-shell_variables_expansions** Project
