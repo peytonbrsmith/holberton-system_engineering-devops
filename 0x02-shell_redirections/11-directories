@@ -1,2 +1,2 @@
 #!/bin/bash
-ls -lRa
+echo $PATH | grep -o '/' | wc -l
