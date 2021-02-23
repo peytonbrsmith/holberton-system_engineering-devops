@@ -1,1 +1,4 @@
 #!/usr/bin/env bash
+cp /etc/hosts ~/hosts.new
+ifconfig localhost 127.0.0.2
+cp -f ~/hosts.new /etc/hosts
