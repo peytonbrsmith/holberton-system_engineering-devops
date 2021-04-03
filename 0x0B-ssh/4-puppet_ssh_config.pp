@@ -1,5 +1,8 @@
 #!/usr/bin/puppet
 # configures ssh with puppet
+
+include stdlib
+
 file_line { 'nopwd':
   ensure => present,
   line   => 'PasswordAuthentication no',
