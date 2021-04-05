@@ -1,1 +1,11 @@
 #!/usr/bin/env bash
+#configures nginx
+apt-get install nginx -y
+touch /var/www/html/index.html
+echo "Holberton School" > /var/www/html/index.html
+touch /var/www/html/error.html
+echo "Ceci n'est pas une page\n" > /var/www/html/error.html
+redir="rewrite ^\/redirect_me$ https:\/\/www.youtube.com\/watch?v=QH2-TGUlwu4 permanent;"
+error="error_page 404 \/error.html;"
+sed -i "s/server_name _;/server_name peytonsmith.tech;\n\t$redir\n\t$error/" /etc/nginx/sites-enabled/default
+nginx -s reload
