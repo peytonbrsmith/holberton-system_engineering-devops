@@ -1,1 +1,4 @@
 #!/usr/bin/env bash
+rm /etc/apache2/sites-enabled/000-default.conf
+a2ensite /etc/apache2/sites-enabled/000-default.conf
+service apache2 reload
