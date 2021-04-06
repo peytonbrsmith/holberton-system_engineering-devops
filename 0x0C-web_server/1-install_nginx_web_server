@@ -4,4 +4,4 @@ apt-get update -y
 apt-get install nginx -y
 touch /var/www/html/index.html
 echo "Holberton School" > /var/www/html/index.html
-nginx -s reload
+service nginx restart
