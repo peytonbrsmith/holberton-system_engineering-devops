@@ -5,4 +5,4 @@ touch /var/www/html/index.html
 echo "Holberton School" > /var/www/html/index.html
 redir="rewrite ^\/redirect_me$ https:\/\/www.youtube.com\/watch?v=QH2-TGUlwu4 permanent;"
 sed -i "s/server_name _;/server_name peytonsmith.tech;\n\t$redir/" /etc/nginx/sites-enabled/default
-nginx -s reload
+service nginx restart
