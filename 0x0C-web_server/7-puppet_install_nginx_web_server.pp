@@ -3,6 +3,11 @@ package { 'nginx':
   ensure => installed,
 }
 
+service { 'nginx':
+  ensure  => stopped,
+  require => Package['nginx'],
+}
+
 file { 'index.html':
   path => '/var/www/html/index.html',
   ensure  => present,
@@ -12,7 +17,7 @@ file { 'index.html':
 file_line { 'redir':
   ensure => 'present',
   path   => '/etc/nginx/sites-available/default',
-  after  => 'server_name _;',
+  after  => 'listen 80 default_server;',
   line   => 'rewrite ^/redirect_me https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;',
 }
 
