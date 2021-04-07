@@ -3,11 +3,6 @@ package { 'nginx':
   ensure => installed,
 }
 
-service { 'nginx':
-  ensure  => stopped,
-  require => Package['nginx'],
-}
-
 file { 'index.html':
   path => '/var/www/html/index.html',
   ensure  => present,
@@ -23,5 +18,6 @@ file_line { 'redir':
 
 service { 'nginx':
   ensure  => running,
+  restart => true,
   require => Package['nginx'],
 }
