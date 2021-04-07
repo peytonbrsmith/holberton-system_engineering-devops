@@ -3,6 +3,12 @@ package { 'nginx':
   ensure => installed,
 }
 
+file { 'index.html':
+  path => '/var/www/html/index.html',
+  ensure  => present,
+  content => 'Holberton School'
+}
+
 file_line { 'redir':
   ensure => 'present',
   path   => '/etc/nginx/sites-available/default',
