@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# configures nginx
-string="add_header X-Served-By \$hostname;"
-sed -r -i "/^\s+server_name .+;/a\ $string" /etc/nginx/sites-available/default
+# configures nginx with hostname http header
+string="\tadd_header X-Served-By \$hostname;"
+sed -r -i "/^\s+server_name _;/a\ $string" /home/vagrant/holberton-system_engineering-devops/0x0F-load_balancer/test
 service nginx restart
