@@ -1,1 +1,5 @@
 #!/usr/bin/env bash
+# configures nginx
+string="add_header X-Served-By $hostname;"
+sed -r -i "/^\s+server_name .+;/a\ $string" /etc/nginx/sites-available/default
+service nginx restart
