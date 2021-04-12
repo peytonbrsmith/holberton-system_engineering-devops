@@ -2,7 +2,7 @@
 # configures nginx with hostname http header
 apt-get update
 apt-get install -y nginx
-string="\tadd_header X-Served-By \$hostname;"
-sed -r -i "/^\s+server_name _;/a\ $string" /etc/nginx/sites-available/default
-sed -r -i "/^\s+server_name _;/a\ $string" /etc/nginx/sites-enabled/default
+string="\tadd_header X-Served-By \$HOSTNAME;"
+sed -r -i "/^\s+server_name .+;/a\ $string" /etc/nginx/sites-available/default
+sed -r -i "/^\s+server_name .+;/a\ $string" /etc/nginx/sites-enabled/default
 service nginx restart
