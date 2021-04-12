@@ -1,1 +1,25 @@
 #!/usr/bin/env bash
+# installs/configures haproxy
+apt-get update
+apt-get install haproxy=1.6.\*
+
+init="# Set ENABLED to 1 if you want the init script to start haproxy.
+ENABLED=1"
+
+echo -e "\n$init" >> /etc/default/haproxy
+
+proxy="frontend http
+    bind *:80
+    mode http
+
+    default_backend web-backend
+
+backend web-backend
+    balance roundrobin
+    mode http
+    server 1884-web-01 34.74.188.209:80
+    server 1884-web-02 54.226.48.62:80"
+
+echo -e "\n$proxy" >> /etc/haproxy/haproxy.cfg
+
+service haproxy restart
