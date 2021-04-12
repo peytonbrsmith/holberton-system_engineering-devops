@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # installs/configures haproxy
 apt-get update
-apt-get install haproxy=1.6.\*
+apt-get install -y haproxy=1.6.\*
 
 init="ENABLED=1"
 
@@ -19,6 +19,6 @@ backend web-backend
         server web-01 34.74.188.209:80
         server web-02 54.226.48.62:80"
 
-echo -e "\n$proxy" >> /etc/haproxy/haproxy.cfg
+echo -e "$proxy" >> /etc/haproxy/haproxy.cfg
 
 service haproxy restart
