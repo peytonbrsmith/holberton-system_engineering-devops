@@ -5,11 +5,8 @@ package { 'nginx':
   ensure => installed,
 }
 
-file_line { 'newheader':
-  ensure => 'present',
-  path   => '/etc/nginx/sites-available/default',
-  after  => 'server_name _;',
-  line   => 'add_header X-Served-By \$HOSTNAME;',
+exec { 'newheader':
+  command => 'sed -r -i "/^\s+server_name .+;/a\ \\tadd_header X-Served-By \$HOSTNAME\;\n" /etc/nginx/sites-available/default'
 }
 
 service { 'nginx':
