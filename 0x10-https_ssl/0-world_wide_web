@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+# digs domain and subdomains
+if [[ $# -ge 1 ]]; then
+    domain=$1
+    url="${domain}"
+    if [[ $# -eq 2 ]]; then
+        subdomain=$2
+        url="${subdomain}.${domain}"
+        dug=$(dig ${url} | awk 'f{print;f=0} /ANSWER SECTION/{f=1}')
+        read -a dug <<< "${dug}"
+        echo "The subdomain ${subdomain} is a ${dug[3]} record and points to ${dug[4]}"
+    else
+        subdomains=("www" "lb-01" "web-01" "web-02")
+        for subdomain in "${subdomains[@]}"; do
+            url="${subdomain}.${domain}"
+            dug=$(dig ${url} | awk 'f{print;f=0} /ANSWER SECTION/{f=1}')
+            read -a dug <<< "${dug}"
+            echo "The subdomain ${subdomain} is a ${dug[3]} record and points to ${dug[4]}"
+        done
+    fi
+fi
