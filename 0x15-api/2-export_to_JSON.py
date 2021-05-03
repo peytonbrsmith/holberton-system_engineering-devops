@@ -5,9 +5,9 @@ Python script to export data in the JSON format.
 """
 
 if __name__ == "__main__":
+    import json
     import requests
     import sys
-    import json
 
     eid = sys.argv[1]
 
