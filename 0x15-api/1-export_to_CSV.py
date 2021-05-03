@@ -20,7 +20,7 @@ if __name__ == "__main__":
         if userId == int(eid):
             info = []
             info.append(eid)
-            info.append(user.json().get('name'))
+            info.append(user.json().get('username'))
             info.append(str(task.get('completed')))
             info.append(task.get('title'))
             etasks.append(info)
