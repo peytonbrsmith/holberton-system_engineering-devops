@@ -11,10 +11,10 @@ def top_ten(subreddit):
         headers={'User-agent': 'test'})
     if subreddit_exists.status_code == 200:
         hot_posts_req = requests.get(
-            "https://reddit.com/r/{}/hot.json".format(subreddit),
+            "https://reddit.com/r/{}/hot.json?limit=10".format(subreddit),
             headers={'User-agent': 'test'})
         for post in list(hot_posts_req.json().get("data").get(
-                "children"))[:10]:
+                "children")):
             print(post.get("data").get("title"))
     else:
         print(None)
