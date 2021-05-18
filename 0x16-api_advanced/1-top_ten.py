@@ -6,7 +6,7 @@ import sys
 
 
 def top_ten(subreddit):
-    """ return sub count """
+    """ return hot posts """
     subreddit_exists = requests.get(
         "https://reddit.com/r/{}".format(subreddit),
         headers={'User-agent': 'test'})
