@@ -4,6 +4,7 @@ import json
 import requests
 import sys
 
+
 def top_ten(subreddit):
     """ return sub count """
     subreddit_exists = requests.get(
