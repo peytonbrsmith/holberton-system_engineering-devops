@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 # restarts gunicorn
 
-sudo systemctl restart gunicorn
+systemctl restart gunicorn
